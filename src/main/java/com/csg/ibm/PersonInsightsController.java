@@ -1,4 +1,4 @@
-package com.example;
+package com.csg.ibm;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,10 +9,10 @@ import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
 @RestController
 public class PersonInsightsController {
 
-	@RequestMapping("/getPersonInsights")
+	@RequestMapping("/personInsights")
 	public Profile getPersonalityInsights() {
 		PersonalityInsights service = new PersonalityInsights();
-		service.setUsernameAndPassword("50483c2d-c2ff-4116-9389-0df194d8eca9", "KQjVEgpCDZ54");
+		service.setUsernameAndPassword("9249b4fe-208a-4f8a-8a0d-5982b520e9c2", "iFjAqauMvOe5");
 
 		String text = "Call me Ishmael. Some years ago-never mind how long "
 				+ "precisely-having little or no money in my purse, and nothing "
@@ -28,7 +28,7 @@ public class PersonInsightsController {
 				+ "the street, and methodically knocking people's hats off-then, "
 				+ "I account it high time to get to sea as soon as I can.";
 
-		Profile profile = service.getProfile(text).execute();
-		return profile;
+		return service.getProfile(text).execute();
+
 	}
 }

@@ -1,4 +1,4 @@
-package com.example;
+package com.csg.ibm;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,11 @@ import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.model.ToneAnalysis;
 @RestController
 public class ToneAnalyzerController {
 
-	@RequestMapping("/getToneAnalysis")
+	@RequestMapping("/toneAnalysis")
 	public ToneAnalysis getToneAnalyzer() {
 
 		ToneAnalyzer service = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_02_11);
-		service.setUsernameAndPassword("5c592faa-fca8-4dd7-805d-0393f83150ca", "oMq0MFQ0cmcY");
+		service.setUsernameAndPassword("01e5d3ee-acc5-4311-982d-d491dfce8184", "5KaMKIAtOh82");
 
 		String text = "I know the times are difficult! Our sales have been "
 				+ "disappointing for the past three quarters for our data analytics "
@@ -27,8 +27,7 @@ public class ToneAnalyzerController {
 				+ "business outcomes. Economy has nothing to do with it.";
 
 		// Call the service and get the tone
-		ToneAnalysis tone = service.getTone(text).execute();
-		return tone;
+		return service.getTone(text).execute();
 
 	}
 }
