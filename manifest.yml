@@ -6,6 +6,6 @@ applications:
   path: target/demo-0.0.1-SNAPSHOT.jar
   timeout: 180
   services:
-  - twitterinsights
-  - tone_analyzer
-  - personality_insights
+  - "Insights for Twitter-ld"
+  - "Tone Analyzer-ln"
+  - "Personality Insights-w9"
