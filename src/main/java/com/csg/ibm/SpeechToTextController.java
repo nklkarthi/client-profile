@@ -1,12 +1,14 @@
 package com.csg.ibm;
 
-import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import java.io.File;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.ToneAnalyzer;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:9000")
@@ -24,6 +26,10 @@ public class SpeechToTextController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		ToneAnalyzer toneAnalyzerService = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_02_11);
+		toneAnalyzerService.setEndPoint("https://gateway.watsonplatform.net/tone-analyzer/api");
+		toneAnalyzerService.setUsernameAndPassword("01e5d3ee-acc5-4311-982d-d491dfce8184", "5KaMKIAtOh82");
 		return sr;
 	}
 }

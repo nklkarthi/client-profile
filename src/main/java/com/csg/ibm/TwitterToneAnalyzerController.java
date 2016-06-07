@@ -8,22 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csg.ibm.util.Twitter4JHelper;
-import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsights;
-import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.ToneAnalyzer;
+import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.model.ToneAnalysis;
 
 import twitter4j.Status;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:9000")
-public class TwitterAnalysisController {
+public class TwitterToneAnalyzerController {
 
-	@RequestMapping("/twitterPersonInsights")
-	public Profile getTwitterAnalysis() {
+	String handle = "@realDonaldTrump";
 
-		String handle = "@realDonaldTrump";
+	@RequestMapping("/twitterToneAnalysis")
+	public ToneAnalysis getToneAnalyzer() {
 
-		PersonalityInsights service = new PersonalityInsights();
-		service.setUsernameAndPassword("9249b4fe-208a-4f8a-8a0d-5982b520e9c2", "iFjAqauMvOe5");
+		ToneAnalyzer service = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_02_11);
+		service.setEndPoint("https://gateway.watsonplatform.net/tone-analyzer/api");
+		service.setUsernameAndPassword("01e5d3ee-acc5-4311-982d-d491dfce8184", "5KaMKIAtOh82");
 
 		Twitter4JHelper twitterHelper = null;
 		try {
@@ -33,7 +34,7 @@ public class TwitterAnalysisController {
 			e1.printStackTrace();
 		}
 
-		HashSet<String> langs = new HashSet<String>();
+		HashSet<String> langs = new HashSet<>();
 		langs.add("en");
 		langs.add("es");
 
@@ -51,8 +52,7 @@ public class TwitterAnalysisController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		return service.getProfile(contentItemsJson).execute();
+		return service.getTone(contentItemsJson).execute();
 
 	}
 }
