@@ -6,6 +6,6 @@ applications:
   path: target/demo-0.0.1-SNAPSHOT.jar
   timeout: 180
   services:
-  - cities-db
-  env:
-    SPRING_PROFILES_ACTIVE: cloud
+  - twitterinsights
+  - tone_analyzer
+  - personality_insights
