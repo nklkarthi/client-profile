@@ -25,20 +25,13 @@ public class TwitterAnalysisController {
 	public Profile getTwitterAnalysis() {
 
 		String handle = "@realDonaldTrump";
-		Properties props = new Properties();
-		try {
-			props.load(FileUtils.openInputStream(new File("twitter.properties")));
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
 
 		PersonalityInsights service = new PersonalityInsights();
 		service.setUsernameAndPassword("9249b4fe-208a-4f8a-8a0d-5982b520e9c2", "iFjAqauMvOe5");
 
 		Twitter4JHelper twitterHelper = null;
 		try {
-			twitterHelper = new Twitter4JHelper(props);
+			twitterHelper = new Twitter4JHelper();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

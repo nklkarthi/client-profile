@@ -35,7 +35,7 @@ public class Twitter4JHelper implements RateLimitStatusListener {
 	boolean rateLimited = false;
 	long rateLimitResetTime = -1;
 
-	public Twitter4JHelper(Properties properties) throws Exception {
+	public Twitter4JHelper() throws Exception {
 		String consumerKey = "ZfGEK9dTh0hlXS32ZVhIfji36";
 		String consumerSecret = "yyBpSHQMvCd60BdI9ZCYkmDZKRlGHlItpafYiVMB5gPji3izM6";
 		String accessToken = "609289044-Uk1ov48LLjaE8Yb53J4L528voBymDmwYAow9QGYO";
