@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.column.Column.
 import com.ibm.watson.developer_cloud.tradeoff_analytics.v1.model.column.NumericColumn;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:9000")
 public class TradeoffAnalyticsController {
 
 	@RequestMapping("/tradeoffAnalytics")

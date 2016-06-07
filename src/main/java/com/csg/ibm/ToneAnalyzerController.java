@@ -1,5 +1,6 @@
 package com.csg.ibm;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,6 +8,7 @@ import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.ToneAnalyzer;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.model.ToneAnalysis;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:9000")
 public class ToneAnalyzerController {
 
 	@RequestMapping("/toneAnalysis")

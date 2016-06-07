@@ -60,6 +60,11 @@
 			<artifactId>java-sdk</artifactId>
 			<version>3.0.0-RC1</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.twitter4j</groupId>
+		    <artifactId>twitter4j-core</artifactId>
+		    <version>4.0.4</version>
+		</dependency>		
 	</dependencies>
 
 	<profiles>
