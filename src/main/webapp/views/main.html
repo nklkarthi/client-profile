@@ -1,0 +1,70 @@
+<h2>Client Report</h2><br>
+<label>Client Name:
+  <input type="text" name="fname" value="Donald Trump">
+</label>
+<button ng-click="myFunction()">Search!</button>
+<h3>Personality</h3>
+<div class="spinner" ng-show="isPersonalitySearch">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+
+
+<table class="table" st-table="rowCollection" ng-show="!isPersonalitySearch">
+  <thead>
+    <tr>
+      <th st-sort="name">Name</th>
+      <th st-sort="percentage" class="header-bar">Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in rowCollection">
+      <td>{{row.name}}</td>
+      <td>
+        <span style="width:{{row.percentage*200}}px" class="cell-bar"/>
+        {{row.percentageDisplay}}%
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3>Social Tendencies</h3>
+<div class="spinner" ng-show="isSocialTendenciesSearch">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+
+<table class="table" st-table="rowCollectionSocialTendencies" ng-show="!isSocialTendenciesSearch">
+  <thead>
+    <tr>
+      <th st-sort="name">Name</th>
+      <th st-sort="percentage" class="header-bar">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in rowCollectionSocialTendencies">
+      <td>{{row.name}}</td>
+      <td>
+        <span style="width:{{row.score*200}}px" class="cell-bar"/>
+        {{row.scoreDisplay}}%
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Speech To Text</h3>
+<div class="spinner" ng-show="isSpeechToText">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+<div  ng-show="!isSpeechToText">
+  <p>{{speechText}}</p>
+</div>
