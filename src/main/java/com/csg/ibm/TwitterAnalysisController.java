@@ -1,12 +1,7 @@
 package com.csg.ibm;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Properties;
-
-import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

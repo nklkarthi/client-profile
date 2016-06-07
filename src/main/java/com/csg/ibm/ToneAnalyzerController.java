@@ -1,15 +1,23 @@
 package com.csg.ibm;
 
+import java.util.HashSet;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.csg.ibm.util.Twitter4JHelper;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.ToneAnalyzer;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3_beta.model.ToneAnalysis;
+
+import twitter4j.Status;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:9000")
 public class ToneAnalyzerController {
+
+	String handle = "@realDonaldTrump";
 
 	@RequestMapping("/toneAnalysis")
 	public ToneAnalysis getToneAnalyzer() {
@@ -18,19 +26,33 @@ public class ToneAnalyzerController {
 		service.setEndPoint("https://gateway.watsonplatform.net/tone-analyzer/api");
 		service.setUsernameAndPassword("01e5d3ee-acc5-4311-982d-d491dfce8184", "5KaMKIAtOh82");
 
-		String text = "I know the times are difficult! Our sales have been "
-				+ "disappointing for the past three quarters for our data analytics "
-				+ "product suite. We have a competitive data analytics product "
-				+ "suite in the industry. But we need to do our job selling it! "
-				+ "We need to acknowledge and fix our sales challenges. "
-				+ "We can’t blame the economy for our lack of execution! "
-				+ "We are missing critical sales opportunities. "
-				+ "Our product is in no way inferior to the competitor products. "
-				+ "Our clients are hungry for analytical tools to improve their "
-				+ "business outcomes. Economy has nothing to do with it.";
+		Twitter4JHelper twitterHelper = null;
+		try {
+			twitterHelper = new Twitter4JHelper();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
-		// Call the service and get the tone
-		return service.getTone(text).execute();
+		HashSet<String> langs = new HashSet<>();
+		langs.add("en");
+		langs.add("es");
+
+		List<Status> tweets = null;
+		try {
+			tweets = twitterHelper.getTweets(handle, langs, 200);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String contentItemsJson = null;
+		try {
+			contentItemsJson = twitterHelper.convertTweetsToPIContentItems(tweets);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return service.getTone(contentItemsJson).execute();
 
 	}
 }
