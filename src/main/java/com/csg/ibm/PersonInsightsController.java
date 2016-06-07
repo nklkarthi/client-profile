@@ -1,5 +1,6 @@
 package com.csg.ibm;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,6 +8,7 @@ import com.ibm.watson.developer_cloud.personality_insights.v2.PersonalityInsight
 import com.ibm.watson.developer_cloud.personality_insights.v2.model.Profile;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:9000")
 public class PersonInsightsController {
 
 	@RequestMapping("/personInsights")

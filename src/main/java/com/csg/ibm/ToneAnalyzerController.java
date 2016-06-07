@@ -13,6 +13,7 @@ public class ToneAnalyzerController {
 	public ToneAnalysis getToneAnalyzer() {
 
 		ToneAnalyzer service = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_02_11);
+		service.setEndPoint("https://gateway.watsonplatform.net/tone-analyzer/api");
 		service.setUsernameAndPassword("01e5d3ee-acc5-4311-982d-d491dfce8184", "5KaMKIAtOh82");
 
 		String text = "I know the times are difficult! Our sales have been "
